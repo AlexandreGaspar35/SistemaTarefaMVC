@@ -1,0 +1,65 @@
+@model IEnumerable<DesafioTrilhaNetMvc.Models.Tarefa>
+@using DesafioTrilhaNetMvc.Models
+
+@{
+    ViewData["Title"] = "Obter Por Titulo";
+}
+
+<h2>Buscar por Titulo da Tarefa</h2>
+
+<hr>
+
+<div class="row">
+        <div class="col-md-6">
+            <form asp-action="BuscarPorTitulo" method="get">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control"  name="titulo" id="titulo" placeholder="Digite o título da tarefa">
+                    <button class="btn btn-primary" type="submit" >Buscar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <td></td>
+            
+        </tr>
+    </thead>
+    <tbody>
+       @if (Model != null )
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Titulo</td>
+                    <td>@item.Descricao</td>
+                    <td>@item.Data</td>
+                    <td>@item.Status</td>
+                    <td></td>
+                </tr>
+            }
+        }
+        else
+        {
+            <p>Nenhum resultado encontrado.</p>
+        }
+       
+    </tbody>
+    </table>
+
+    <a asp-action="Index">Voltar</a>
+    
+    

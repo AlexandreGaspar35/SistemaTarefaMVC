@@ -1,0 +1,61 @@
+@model DesafioTrilhaNetMvc.Models.Tarefa
+
+@using DesafioTrilhaNetMvc.Models
+
+@{
+    ViewData["Title"] = "Criar nova tarefa";
+}
+
+<h2>Nova Tarefa</h2>
+
+<hr>
+
+<div class="row">
+    <div class="col-md-5">
+        <form asp-action="Criar">
+            <div class="form-group">
+                <label asp-for="Titulo" class="control-label"></label>
+                <input asp-for="Titulo" class="form-control" />
+                <div class="text-danger">
+                    @Html.ValidationMessageFor(model => model.Titulo)
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descricao" class="control-label"></label>
+                <input asp-for="Descricao" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="Data" class="control-label"></label>
+                <input asp-for="Data" class="form-control" type="date" asp-format="{0:dd-MM-yyyy}"/>
+                <div class="text-danger">
+                    @Html.ValidationMessageFor(model => model.Data)
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" class="form-control">
+                    @foreach(var item in Enum.GetValues(typeof(EnumStatusTarefa)))
+                    {
+                        if ((int)item == 0)
+                        {
+                            <option value="@item" selected>@item</option>
+                        }
+                        else
+                        {
+                            <option value="@item" disabled>@item</option>
+                        }
+                    }
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="submit" value="Criar" class="btn btn-primary">
+            </div>
+            
+        </form>
+    </div>
+</div>
+<br>
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>

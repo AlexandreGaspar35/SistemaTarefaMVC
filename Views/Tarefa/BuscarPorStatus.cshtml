@@ -1,0 +1,67 @@
+@model IEnumerable<DesafioTrilhaNetMvc.Models.Tarefa>
+
+
+@{
+    ViewData["Title"] = "Buscar Por Status";
+}
+
+<h2>Buscar Status</h2>
+
+<hr>
+
+<form asp-action="BuscarPorStatus" class="form-inline" method="get">
+    <label for="status" class="my-1 mr-2">Selecione o Status: </label>
+    <select id="status" name="status" class="custom-select my-1 mr-2">
+        <option selected>Escolher...</option>
+        <option value="Pendente">Pendente</option>
+        <option value="Finalizado">Finalizado</option>
+    </select>
+    <button class="btn btn-primary" type="submit">Buscar</button>
+</form>
+
+<table class="table">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Data)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Status)
+                </td>
+                
+                <td>
+                    <a asp-action="Editar" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="Detalhes" asp-route-id="@item.Id">Detalhes</a> |
+                    <a asp-action="Deletar" asp-route-id="@item.Id">Deletar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+    <a asp-action="Index">Voltar</a>

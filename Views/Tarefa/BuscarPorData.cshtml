@@ -1,0 +1,67 @@
+@model IEnumerable<DesafioTrilhaNetMvc.Models.Tarefa>
+
+
+@{
+    ViewData["Title"] = "Buscar por Data";
+}
+
+<h2>Buscar por Data</h2>
+
+<hr>
+
+<div class="row">
+        <div class="col-md-6">
+            <form asp-action="BuscarPorData" method="get">
+                <div class="input-group mb-3">
+                    <input type="date" name="data" id="data" placeholder="Digite a Data da tarefa">
+                    <button class="btn btn-primary" type="submit" >Buscar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <td></td>
+            
+        </tr>
+    </thead>
+    <tbody>
+       @if (Model != null )
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Titulo</td>
+                    <td>@item.Descricao</td>
+                    <td>@item.Data</td>
+                    <td>@item.Status</td>
+                    <td></td>
+                </tr>
+            }
+        }
+        else
+        {
+            <p>Nenhum resultado encontrado.</p>
+        }
+    </tbody>
+    </table>
+    <a asp-action="Index">Voltar</a>
+    
+    

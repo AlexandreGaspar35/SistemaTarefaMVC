@@ -1,0 +1,22 @@
+@model IEnumerable<DesafioTrilhaNetMvc.Models.Tarefa>
+
+@{
+    ViewData["Title"] = "Oranizador de Tarefas";
+} 
+
+<h2> Gerencie suas Tarefas</h2>
+
+
+<p>
+    <a asp-action="Criar" class="btn btn-outline-success">Criar Tarefa</a>
+
+    <a asp-action="BuscarPorTitulo" class="btn btn-outline-dark">Buscar por Titulo</a>
+
+    <a asp-action="BuscarPorData" class="btn btn-outline-dark">Buscar por Data</a>
+
+    <a asp-action="BuscarPorStatus" class="btn btn-outline-dark">Buscar por Status</a>
+
+    <a asp-action="BuscarTodas" class="btn btn-outline-dark">Todas as Tarefas</a>
+
+  
+</p>
